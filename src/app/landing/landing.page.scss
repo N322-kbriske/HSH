@@ -1,0 +1,27 @@
+@font-face {
+  font-family: Roboto;
+  src: url("../../assets/fonts/Roboto-Regular.ttf");
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 0px 120px 0px;
+}
+
+.signUpBtn {
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 15px;
+  border-radius: 1px;
+  height: 60px;
+}
+
+.signInBtn {
+  color: black;
+  font-family: Roboto;
+  font-size: 15px;
+  border-radius: 1px;
+  height: 60px;
+}

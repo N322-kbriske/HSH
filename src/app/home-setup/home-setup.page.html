@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/sign-up"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="createHomeTitle">Create Home</div>
+
+  <div class="homeInfo">
+    <ion-label class="homeNameLabel">Home Name</ion-label>
+    <ion-input type="text" class="homeNameInput"></ion-input>
+  </div>
+
+  <div>
+    <ion-button
+      expand="full"
+      color="tertiary"
+      class="continueBtn"
+      [routerLink]="['/home']"
+      >Continue</ion-button
+    >
+  </div>
+</ion-content>

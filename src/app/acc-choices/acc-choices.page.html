@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="accChoiceHeadContain">
+    <div class="accChoiceTitle">What accessory?</div>
+    <div class="accChoiceSubtitle">Please select an accessory type</div>
+  </div>
+
+  <!-- will need a loop here to place the options in from JSON, should I store these in Firebase? -->
+  <div class="optionGrid">
+    <ion-button
+      class="col"
+      color="menuBar"
+      fill="outline"
+      [routerLink]="['/acc-setup']"
+      >Lightbulb</ion-button
+    >
+    <ion-button
+      class="col"
+      color="menuBar"
+      fill="outline"
+      [routerLink]="['/acc-setup']"
+      >Switch</ion-button
+    >
+    <ion-button
+      class="col"
+      color="menuBar"
+      fill="outline"
+      [routerLink]="['/acc-setup']"
+      >Lock</ion-button
+    >
+    <!-- <ion-button>Custom Button</ion-button> -->
+  </div>
+</ion-content>

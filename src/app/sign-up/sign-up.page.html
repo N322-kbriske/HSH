@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="signUpTitle">Create Account</div>
+
+  <div class="email">
+    <ion-label class="emailLabel">Email</ion-label>
+    <ion-input type="email" class="emailInput"></ion-input>
+  </div>
+
+  <div class="password">
+    <ion-label class="passwordLabel">Password</ion-label>
+    <ion-input type="password" class="passwordInput"></ion-input>
+  </div>
+
+  <div>
+    <ion-button
+      expand="full"
+      color="tertiary"
+      class="continueBtn"
+      [routerLink]="['/home-setup']"
+      >Continue</ion-button
+    >
+  </div>
+  <!-- <form [formGroup]="credentials">
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+      ></ion-input>
+      <ion-note
+        slot="error"
+        *ngIf="(email.dirty || email.touched) && email.errors"
+        >Email is invalid</ion-note
+      >
+    </ion-item>
+
+    <ion-item fill="solid" class="ion-margin-bottom">
+      <ion-input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      ></ion-input>
+      <ion-note
+        slot="error"
+        *ngIf="(password.dirty || password.touched) && password.errors"
+        >Email is invalid</ion-note
+      >
+    </ion-item>
+
+    <ion-button
+      (click)="login()"
+      type="submit"
+      expand="block"
+      [disabled]="!credentials.valid"
+      >Log in</ion-button
+    >
+    <ion-button
+      type="submit"
+      expand="block"
+      color="primary"
+      [disabled]="!credentials.valid"
+      (click)="register()"
+      >Create Account</ion-button
+    >
+
+    <ion-button (click)="loginWithGoogle()" type="submit" expand="block"
+      >Sign In With Google</ion-button
+    >
+  </form> -->
+</ion-content>

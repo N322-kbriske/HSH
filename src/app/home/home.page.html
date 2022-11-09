@@ -1,20 +1,66 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title class="homeTitle"> My Home </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <!-- <h1>Home Page</h1> -->
+  <div class="emptyRoom">
+    <div class="emptyRoomText">Add an accessory</div>
+    <ion-button color="danger" [routerLink]="['/acc-choices']">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-button>
+  </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="menuBar">
+    <div class="barHomeButton">
+      <ion-button color="menuBar" [routerLink]="['/home']">
+        <svg
+          width="34"
+          height="38"
+          viewBox="0 0 38 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.2 32V20.7059H22.8V32H32.3V16.9412H38L19 0L0 16.9412H5.7V32H15.2Z"
+            fill="#2A2E45"
+          />
+        </svg>
+      </ion-button>
+    </div>
+    <div class="barAddButton">
+      <ion-button color="menuBar" [routerLink]="['/acc-choices']">
+        <svg
+          width="29"
+          height="28"
+          viewBox="0 0 33 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M33 18.2857H18.8571V32H14.1429V18.2857H0V13.7143H14.1429V0H18.8571V13.7143H33V18.2857Z"
+            fill="#2A2E45"
+          />
+        </svg>
+      </ion-button>
+    </div>
+    <div class="barHelpButton">
+      <ion-button color="menuBar" [routerLink]="['/home']">
+        <svg
+          width="28"
+          height="28"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.33 5.99875H19.34L24.8343 0.49347C24.9896 0.337106 25.1743 0.212997 25.3778 0.128301C25.5813 0.0436055 25.7996 0 26.02 0C26.2405 0 26.4588 0.0436055 26.6623 0.128301C26.8658 0.212997 27.0505 0.337106 27.2058 0.49347L31.5144 4.81428C31.8254 5.12685 32 5.54967 32 5.99041C32 6.43114 31.8254 6.85396 31.5144 7.16653L27.6901 11.0035H14.33V14.3401C14.33 14.7825 14.154 15.2069 13.8409 15.5197C13.5277 15.8326 13.1029 16.0083 12.66 16.0083C12.2171 16.0083 11.7923 15.8326 11.4791 15.5197C11.1659 15.2069 10.99 14.7825 10.99 14.3401V9.33528C10.99 8.45038 11.3419 7.60171 11.9682 6.97599C12.5946 6.35027 13.4442 5.99875 14.33 5.99875ZM4.30994 14.3401V21.0131L0.485626 24.8335C0.174586 25.146 0 25.5689 0 26.0096C0 26.4503 0.174586 26.8732 0.485626 27.1857L4.79425 31.5065C4.9495 31.6629 5.1342 31.787 5.33771 31.8717C5.54121 31.9564 5.75949 32 5.97995 32C6.20041 32 6.41869 31.9564 6.6222 31.8717C6.8257 31.787 7.01041 31.6629 7.16566 31.5065L14.33 24.3497H21.01C21.4529 24.3497 21.8777 24.1739 22.1909 23.861C22.5041 23.5482 22.68 23.1239 22.68 22.6814V21.0131H24.35C24.793 21.0131 25.2177 20.8374 25.5309 20.5245C25.8441 20.2117 26.02 19.7873 26.02 19.3449V17.6766H27.6901C28.133 17.6766 28.5577 17.5008 28.8709 17.188C29.1841 16.8751 29.3601 16.4508 29.3601 16.0083V14.3401H17.67V16.0083C17.67 16.8932 17.3181 17.7419 16.6917 18.3676C16.0654 18.9933 15.2158 19.3449 14.33 19.3449H10.99C10.1041 19.3449 9.2546 18.9933 8.62823 18.3676C8.00185 17.7419 7.64996 16.8932 7.64996 16.0083V11.0035L4.30994 14.3401Z"
+            fill="#2A2E45"
+          />
+        </svg>
+      </ion-button>
+    </div>
   </div>
 </ion-content>

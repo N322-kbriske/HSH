@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/acc-setup"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="createAccessoryTitle">What room is it in?</div>
+
+  <div class="accessoryInfo">
+    <ion-label class="accLabel">Room Name</ion-label>
+    <ion-input type="text" class="accNameInput"></ion-input>
+  </div>
+
+  <div>
+    <ion-button
+      expand="full"
+      color="tertiary"
+      class="continueBtn"
+      [routerLink]="['/home']"
+      >Finish Setup</ion-button
+    >
+  </div>
+</ion-content>
