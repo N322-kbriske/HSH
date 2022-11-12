@@ -9,70 +9,35 @@
 <ion-content class="ion-padding">
   <div class="signInTitle">Sign In</div>
 
-  <div class="email">
-    <ion-label class="emailLabel">Email</ion-label>
-    <ion-input type="email" class="emailInput"></ion-input>
-  </div>
-
-  <div class="password">
-    <ion-label class="passwordLabel">Password</ion-label>
-    <ion-input type="password" class="passwordInput"></ion-input>
-  </div>
-
-  <div>
-    <ion-button
-      expand="full"
-      color="tertiary"
-      class="continueBtn"
-      [routerLink]="['/home']"
-      >Continue</ion-button
-    >
-  </div>
-  <!-- <form [formGroup]="credentials">
-    <ion-item fill="solid" class="ion-margin-bottom">
+  <form [formGroup]="credentials">
+    <div class="email">
+      <ion-label class="emailLabel">Email</ion-label>
       <ion-input
         type="email"
-        placeholder="Email"
+        class="emailInput"
         formControlName="email"
       ></ion-input>
-      <ion-note
-        slot="error"
-        *ngIf="(email.dirty || email.touched) && email.errors"
-        >Email is invalid</ion-note
-      >
-    </ion-item>
+    </div>
 
-    <ion-item fill="solid" class="ion-margin-bottom">
+    <div class="password">
+      <ion-label class="passwordLabel">Password</ion-label>
       <ion-input
         type="password"
-        placeholder="Password"
+        class="passwordInput"
         formControlName="password"
       ></ion-input>
-      <ion-note
-        slot="error"
-        *ngIf="(password.dirty || password.touched) && password.errors"
-        >Email is invalid</ion-note
+    </div>
+
+    <div>
+      <ion-button
+        expand="full"
+        color="tertiary"
+        class="continueBtn"
+        type="submit"
+        [disabled]="!credentials.valid"
+        (click)="login()"
+        >Continue</ion-button
       >
-    </ion-item>
-
-    <ion-button
-      (click)="login()"
-      type="submit"
-      expand="block"
-      [disabled]="!credentials.valid"
-      >Log in</ion-button
-    >
-    <ion-button
-      type="submit"
-      expand="block"
-      color="primary"
-      [disabled]="!credentials.valid"
-      (click)="register()"
-      >Create Account</ion-button
-    >
-
-    <ion-button (click)="loginWithGoogle()" type="submit" expand="block"
-      >Sign In With Google</ion-button
-    >
-  </form> -->
+    </div>
+  </form>
 </ion-content>

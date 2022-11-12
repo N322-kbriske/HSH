@@ -90,12 +90,19 @@
     --ion-color-primary-shade: #3a7be0;
     --ion-color-primary-tint: #5598ff;
 
-    --ion-color-menuBar: #D9D9D9;
+    --ion-color-logOut: #2a2e45;
+    --ion-color-logOut-rgb: 66, 140, 255;
+    --ion-color-logOut-contrast: #ffffff;
+    --ion-color-logOut-contrast-rgb: 255, 255, 255;
+    --ion-color-logOut-shade: #2a2e45;
+    --ion-color-logOut-tint: #2a2e45;
+
+    --ion-color-menuBar: #d9d9d9;
     --ion-color-menuBar-rgb: 66, 140, 255;
     --ion-color-menuBar-contrast: #ffffff;
     --ion-color-menuBar-contrast-rgb: 255, 255, 255;
-    --ion-color-menuBar-shade: #D9D9D9;
-    --ion-color-menuBar-tint: #D9D9D9;
+    --ion-color-menuBar-shade: #d9d9d9;
+    --ion-color-menuBar-tint: #d9d9d9;
 
     --ion-color-secondary: #50c8ff;
     --ion-color-secondary-rgb: 80, 200, 255;
@@ -115,9 +122,9 @@
     --ion-color-optionButton-rgb: 106, 100, 255;
     --ion-color-optionButton-contrast: #ffffff;
     --ion-color-optionButton-contrast-rgb: 255, 255, 255;
-    --ion-color-optionButton-shade: #2A2E45;
-    --ion-color-optionButton-tint: #2A2E45;
-    
+    --ion-color-optionButton-shade: #2a2e45;
+    --ion-color-optionButton-tint: #2a2e45;
+
     --ion-color-success: #f8f0e3;
     --ion-color-success-rgb: 47, 223, 117;
     --ion-color-success-contrast: #000000;
@@ -167,10 +174,12 @@
    */
 
   .ios body {
+    // this is the background of the application pages
     --ion-background-color: #f8f0e3;
     --ion-background-color-rgb: 0, 0, 0;
 
-    --ion-text-color: #ffffff;
+    // changed this to black to get black text on alerts, was #ffffff
+    --ion-text-color: #000000;
     --ion-text-color-rgb: 255, 255, 255;
 
     --ion-color-step-50: #f8f0e3;
