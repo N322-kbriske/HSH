@@ -11,88 +11,40 @@
 
   <div class="fName">
     <ion-label class="fNameLabel">Name</ion-label>
-    <ion-input type="text" class="fNameInput"></ion-input>
+    <ion-input
+      type="text"
+      [(ngModel)]="firstName"
+      class="fNameInput"
+    ></ion-input>
+  </div>
+
+  <div class="lName">
+    <ion-label class="lNameLabel">Last Name</ion-label>
+    <ion-input
+      type="text"
+      [(ngModel)]="lastName"
+      class="lNameInput"
+    ></ion-input>
+  </div>
+
+  <!-- <div class="">
+    <ion-label class="lNameLabel">Password</ion-label>
+    <ion-input type="text" class="lNameInput"></ion-input>
   </div>
 
   <div class="lName">
     <ion-label class="lNameLabel">Password</ion-label>
     <ion-input type="text" class="lNameInput"></ion-input>
-  </div>
-
-  <div class="">
-    <ion-label class="lNameLabel">Password</ion-label>
-    <ion-input type="text" class="lNameInput"></ion-input>
-  </div>
-
-  <div class="lName">
-    <ion-label class="lNameLabel">Password</ion-label>
-    <ion-input type="text" class="lNameInput"></ion-input>
-  </div>
+  </div> -->
 
   <div>
     <ion-button
       expand="full"
       color="tertiary"
       class="continueBtn"
-      [routerLink]="['/home-setup']"
+      (click)=""
+      [routerLink]="['/home']"
       >Continue</ion-button
     >
   </div>
-
-  <div>
-    <ion-button
-      expand="full"
-      color="success"
-      class="signInBtn"
-      [routerLink]="['/sign-in']"
-      >Sign In</ion-button
-    >
-  </div>
-  <!-- <form [formGroup]="credentials">
-      <ion-item fill="solid" class="ion-margin-bottom">
-        <ion-input
-          type="email"
-          placeholder="Email"
-          formControlName="email"
-        ></ion-input>
-        <ion-note
-          slot="error"
-          *ngIf="(email.dirty || email.touched) && email.errors"
-          >Email is invalid</ion-note
-        >
-      </ion-item>
-  
-      <ion-item fill="solid" class="ion-margin-bottom">
-        <ion-input
-          type="password"
-          placeholder="Password"
-          formControlName="password"
-        ></ion-input>
-        <ion-note
-          slot="error"
-          *ngIf="(password.dirty || password.touched) && password.errors"
-          >Email is invalid</ion-note
-        >
-      </ion-item>
-  
-      <ion-button
-        (click)="login()"
-        type="submit"
-        expand="block"
-        [disabled]="!credentials.valid"
-        >Log in</ion-button
-      >
-      <ion-button
-        type="submit"
-        expand="block"
-        color="primary"
-        [disabled]="!credentials.valid"
-        (click)="register()"
-        >Create Account</ion-button
-      >
-  
-      <ion-button (click)="loginWithGoogle()" type="submit" expand="block"
-        >Sign In With Google</ion-button
-      >
-    </form> -->
 </ion-content>

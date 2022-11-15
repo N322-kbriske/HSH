@@ -7,7 +7,11 @@
 
   <div class="homeInfo">
     <ion-label class="homeNameLabel">Home Name</ion-label>
-    <ion-input type="text" class="homeNameInput"></ion-input>
+    <ion-input
+      type="text"
+      class="homeNameInput"
+      [(ngModel)]="homeName"
+    ></ion-input>
   </div>
 
   <div>
@@ -15,6 +19,7 @@
       expand="full"
       color="tertiary"
       class="continueBtn"
+      (click)="getHomeName()"
       [routerLink]="['/home']"
       >Continue</ion-button
     >

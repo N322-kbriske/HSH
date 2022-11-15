@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-accessory-room',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accessory-room.page.scss'],
 })
 export class AccessoryRoomPage implements OnInit {
+  roomName: string;
+  constructor(private auth: AuthService) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  getRoomName() {
+    console.log(this.roomName);
+    this.auth.roomName = this.roomName;
+    console.log('AUTH ROOM NAME', this.auth.roomName);
+    // this.auth.addtoDB();
   }
 
+  ngOnInit() {}
 }

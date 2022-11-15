@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="homeTitle"> My Home </ion-title>
+    <ion-title class="homeTitle"> {{homeName}} </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="signOut()">
         <ion-icon color="tertiary" slot="end" name="log-out"></ion-icon>
@@ -13,7 +13,11 @@
   <!-- <h1>Home Page</h1> -->
   <div class="emptyRoom">
     <div class="emptyRoomText">Add an accessory</div>
-    <ion-button color="danger" [routerLink]="['/acc-choices']">
+    <ion-button
+      color="danger"
+      (click)="addAcc()"
+      [routerLink]="['/acc-choices']"
+    >
       <ion-icon name="add-outline"></ion-icon>
     </ion-button>
   </div>

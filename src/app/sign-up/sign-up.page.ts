@@ -57,9 +57,10 @@ export class SignUpPage implements OnInit {
     const user = await this.authService.register(this.credentials.value);
     await loading.dismiss();
 
-    /* If the user is logged in, it will navigate to the home page. If not, it will show an alert. */
+    /* If the user is logged in, it will navigate to the home setup page. If not, it will show an alert. */
     if (user) {
-      this.router.navigateByUrl('/home-setup', { replaceUrl: true });
+      //! WAS HOME-SETUP
+      this.router.navigateByUrl('/profile-setup', { replaceUrl: true });
     } else {
       this.showAlert('Sign up failed', 'Please try again');
     }

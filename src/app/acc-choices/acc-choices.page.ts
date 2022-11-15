@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./acc-choices.page.scss'],
 })
 export class AccChoicesPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
+  addLightBulb() {
+    console.log('light bulb');
   }
 
+  ngOnInit() {}
 }

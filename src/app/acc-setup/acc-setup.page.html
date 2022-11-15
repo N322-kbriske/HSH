@@ -11,7 +11,11 @@
 
   <div class="accessoryInfo">
     <ion-label class="accLabel">Accessory Name</ion-label>
-    <ion-input type="text" class="accNameInput"></ion-input>
+    <ion-input
+      type="text"
+      [(ngModel)]="accName"
+      class="accNameInput"
+    ></ion-input>
   </div>
 
   <div>
@@ -19,6 +23,7 @@
       expand="full"
       color="tertiary"
       class="continueBtn"
+      (click)="getAccName()"
       [routerLink]="['/accessory-room']"
       >Continue</ion-button
     >
