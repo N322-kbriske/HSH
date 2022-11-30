@@ -7,14 +7,40 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./accessory-room.page.scss'],
 })
 export class AccessoryRoomPage implements OnInit {
+  profile = null;
   roomName: string;
-  constructor(private auth: AuthService) {}
+  rooms: [];
+
+  constructor(private auth: AuthService) {
+    this.auth.getUserProfile().subscribe((data) => {
+      this.profile = data;
+      //! this can be used on the next page to show rooms in the acc<>room
+      this.rooms = data.rooms;
+      // console.log('test', this.rooms);
+    });
+  }
+
+  getRoom(room) {
+    console.log(room);
+    // this.auth.home.rooms.push(room);
+    this.auth.currentRoomObj = room;
+    // this.auth.save();
+  }
 
   getRoomName() {
-    console.log(this.roomName);
-    this.auth.roomName = this.roomName;
-    console.log('AUTH ROOM NAME', this.auth.roomName);
-    // this.auth.addtoDB();
+    // console.log(this.roomName);
+    let room = {
+      name: this.roomName,
+      accessories: [],
+      roomID: Date.now().toString(),
+    };
+
+    console.log(room);
+
+    //! check the order of these
+    this.auth.home.rooms.push(room);
+    this.auth.currentRoomObj = room;
+    this.auth.save();
   }
 
   ngOnInit() {}

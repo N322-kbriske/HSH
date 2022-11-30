@@ -9,6 +9,18 @@
 <ion-content class="ion-padding">
   <div class="createAccessoryTitle">What room is it in?</div>
 
+  <div class="roomSelect" *ngIf="rooms != 0">
+    <ion-button
+      *ngFor="let room of rooms"
+      class="col"
+      color="menuBar"
+      fill="outline"
+      [routerLink]="['/acc-choices']"
+      (click)="getRoom(room)"
+      >{{room.name}}</ion-button
+    >
+  </div>
+
   <div class="accessoryInfo">
     <ion-label class="accLabel">Room Name</ion-label>
     <ion-input
@@ -24,8 +36,8 @@
       color="tertiary"
       class="continueBtn"
       (click)="getRoomName()"
-      [routerLink]="['/home']"
-      >Finish Setup</ion-button
+      [routerLink]="['/acc-choices']"
+      >Continue</ion-button
     >
   </div>
 </ion-content>

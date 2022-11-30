@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -26,6 +26,7 @@
       class="col"
       color="menuBar"
       fill="outline"
+      (click)="addSwitch()"
       [routerLink]="['/acc-setup']"
       >Switch</ion-button
     >
@@ -33,6 +34,7 @@
       class="col"
       color="menuBar"
       fill="outline"
+      (click)="addLock()"
       [routerLink]="['/acc-setup']"
       >Lock</ion-button
     >

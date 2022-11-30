@@ -14,13 +14,22 @@
     ></ion-input>
   </div>
 
+  <!-- <div class="fName">
+    <ion-label class="fNameLabel">Owner Name</ion-label>
+    <ion-input
+      type="text"
+      [(ngModel)]="firstName"
+      class="fNameInput"
+    ></ion-input>
+  </div> -->
+
   <div>
     <ion-button
       expand="full"
       color="tertiary"
       class="continueBtn"
-      (click)="getHomeName()"
-      [routerLink]="['/home']"
+      (click)="initHome()"
+      [routerLink]="['/profile-setup']"
       >Continue</ion-button
     >
   </div>

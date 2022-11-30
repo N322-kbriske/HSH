@@ -5,7 +5,6 @@ import {
   createUserWithEmailAndPassword,
   signOut,
 } from '@angular/fire/auth';
-
 import { Firestore, setDoc, docData, doc } from '@angular/fire/firestore';
 import {
   Storage,
@@ -13,52 +12,96 @@ import {
   getDownloadURL,
   uploadString,
 } from '@angular/fire/storage';
-import { Home } from '../models/home.interface';
+import { HomePage } from '../home/home.page';
+import { Home, Room, User, Accessories } from '../models/home.interface';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  //? Should I be storing the values for these things locally and THEN pushing them up?
-  // homeName: string;
-  // accName: string;
-  roomName: string;
-  //! had to add the full structure so that it was not undefined
-  public home: Home = {
-    owner: [
-      {
-        name: '',
-        role: '',
-      },
-    ],
-    homeName: '',
-    rooms: [
-      {
-        roomName: '',
-        accessories: [
-          {
-            accessoryName: '',
-            accessoryType: '',
-            accessoryState: false,
-          },
-        ],
-      },
-    ],
-  };
+  public home: Home;
+  // public currentRoom: any = {};
+
+  public currentRoomObj: any = {};
+
+  public accType: string;
+  public currentRoomID: string;
+  public currentAccID: string;
+
   constructor(
     private auth: Auth,
     private firestore: Firestore,
-    private storage: Storage
-  ) {}
+    private storage: Storage,
+    private toastController: ToastController
+  ) {
+    // this.getCurrentRoom();
+  }
 
   getUserProfile() {
     /* Getting the current user from the auth service. */
     const user = this.auth.currentUser;
     /* Getting a reference to the user's document in the firestore database. */
     const userDocRef = doc(this.firestore, `Users/${user.uid}`);
-    console.log('Profile Retrieved ID:', user.uid);
+    // console.log('Retrieved ID:', user.uid);
+    // console.log(user);
     /* Getting the data from the userDocRef and returning it. */
     return docData(userDocRef, { idField: 'id' });
+  }
+
+  deleteAcc(acc) {
+    this.home.rooms.forEach((room) => {
+      if (room.roomID === this.currentRoomObj.roomID) {
+        // console.log('ID', acc.accID);
+        const index = this.currentRoomObj.accessories.indexOf(acc);
+        console.log(index);
+        this.currentRoomObj.accessories.splice(index, 1);
+        console.log(this.currentRoomObj.accessories);
+        room.accessories = this.currentRoomObj.accessories;
+        this.save();
+      }
+    });
+  }
+
+  async presentToast(position: 'top' | 'middle' | 'bottom', message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2200,
+      cssClass: 'custom-toast',
+      position: position,
+      // icon: 'checkmark-outline'
+      // buttons: [
+      //   {
+      //     text: 'Dismiss',
+      //     role: 'cancel',
+      //   },
+      // ],
+    });
+    await toast.present();
+  }
+
+  updateAcc(acc) {
+    this.home.rooms.forEach((room) => {
+      if (room.roomID === this.currentRoomObj.roomID) {
+        const index = this.currentRoomObj.accessories.indexOf(acc);
+        console.log(index);
+        room.accessories = this.currentRoomObj.accessories;
+        this.save();
+      }
+    });
+  }
+
+  updateRoom() {
+    this.home.rooms.forEach((room) => {
+      console.log(room.roomID);
+      if (room.roomID === this.currentRoomObj.roomID) {
+        console.log('Eurika');
+        room.accessories = this.currentRoomObj.accessories;
+        this.save();
+        //! added this nov 30 3:28
+        this.presentToast('top', 'Accessory Added');
+      }
+    });
   }
 
   /*
@@ -70,12 +113,6 @@ export class AuthService {
     console.log(this.home);
     this.save();
   }
-
-  // async addtoDB() {
-  //   this.home.rooms[0].accessories[0].accessoryName = this.accName;
-  //   this.home.rooms[0].roomName = this.roomName;
-  //   this.save();
-  // }
 
   //* create a user
   async register({ email, password }) {
@@ -109,7 +146,7 @@ export class AuthService {
       docData(userDocRef, { idField: 'id' }).subscribe((data) => {
         /* Casting the data as a Home object. */
         this.home = data as Home;
-        console.log('home', this.home);
+        console.log('auth data retrieval', this.home);
       });
 
       /* Returning the user object. */
@@ -127,11 +164,15 @@ export class AuthService {
 
   //* save information about a user to firestore
   save() {
+    console.log('auth ', this.home);
     /* Getting the current user from the auth service. */
     const user = this.auth.currentUser;
     /* Getting a reference to the user's document in the firestore database. */
     const userDocRef = doc(this.firestore, `Users/${user.uid}`);
+
     /* Setting the document in the firestore database. */
     setDoc(userDocRef, this.home);
+
+    //replace room selected with current room
   }
 }

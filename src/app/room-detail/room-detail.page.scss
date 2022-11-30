@@ -1,0 +1,122 @@
+@font-face {
+  font-family: Roboto;
+  src: url("../../assets/fonts/Roboto-Regular.ttf");
+}
+
+.currentRoomTitle {
+  font-family: Roboto;
+  color: #1e1e1e;
+  font-weight: 600;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //TODO could be changed to 30 px on bottom to match home
+  margin: 5px 0px 38px 0px;
+}
+
+.accContainer {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  // border: 2px solid red;
+
+  .acc {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    // font-size: 5vw;
+    width: 117px;
+    height: 75px;
+    margin-bottom: 6px;
+
+    background: #f8f0e3;
+    border: 1px solid rgba(153, 153, 153, 0.25);
+    border-radius: 9px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+    .accIcon {
+      width: 40px;
+      height: 40px;
+      background: #f8f0e3;
+      box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 50%;
+      // margin-right: 10px;
+    }
+  }
+}
+
+.addScrollArea {
+  padding: 25px;
+  // border: 2px solid orange;
+}
+
+.accessoryInfo {
+  margin-top: 150px;
+  .accLabel {
+    color: #1e1e1e;
+    font-size: 15px;
+    font-family: Roboto;
+    font-weight: 400;
+  }
+
+  ion-input.accNameInput {
+    --background: #f8f0e3;
+    --color: black;
+    border: 1px solid #2a2e45;
+    --placeholder-color: black;
+    --placeholder-opacity: 0.8;
+
+    --padding-bottom: 10px;
+    --padding-end: 10px;
+    --padding-start: 10px;
+    --padding-top: 10px;
+  }
+}
+
+.updateAcc {
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 15px;
+  border-radius: 1px;
+  height: 60px;
+  margin-top: 140px;
+  margin: 135px 0px 10px 0px;
+}
+
+.deleteAcc {
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 15px;
+  border-radius: 1px;
+  height: 60px;
+  //TODO can use fixed to make sure it always stays in place
+  // width: 240px;
+  // position: fixed;
+  // bottom: 0;
+}
+
+.menuBar {
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 10px 15px 10px;
+  background-color: #d9d9d9;
+  bottom: 0;
+  opacity: 95%;
+  // border: 2px solid red;
+}
+
+.toolbarTitle {
+}

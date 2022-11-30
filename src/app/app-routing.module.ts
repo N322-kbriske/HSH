@@ -71,6 +71,21 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'profile-detail',
+    loadChildren: () =>
+      import('./profile-detail/profile-detail.module').then(
+        (m) => m.ProfileDetailPageModule
+      ),
+  },
+  {
+    //! could use /:id instead?
+    path: 'room-detail',
+    loadChildren: () =>
+      import('./room-detail/room-detail.module').then(
+        (m) => m.RoomDetailPageModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',

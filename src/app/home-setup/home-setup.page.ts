@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Home } from '../models/home.interface';
 
 @Component({
   selector: 'app-home-setup',
@@ -9,29 +8,7 @@ import { Home } from '../models/home.interface';
 })
 export class HomeSetupPage implements OnInit {
   profile = null;
-  homeName: string;
-
-  public home: Home = {
-    owner: [
-      {
-        name: '',
-        role: '',
-      },
-    ],
-    homeName: '',
-    rooms: [
-      {
-        roomName: '',
-        accessories: [
-          {
-            accessoryName: '',
-            accessoryType: '',
-            accessoryState: false,
-          },
-        ],
-      },
-    ],
-  };
+  homeName: string = '';
 
   constructor(private auth: AuthService) {
     /* Getting the user profile from the database and assigning it to the variable profile. */
@@ -40,15 +17,15 @@ export class HomeSetupPage implements OnInit {
     });
   }
 
-  /**
-   * The function gets the home name from the input field and then adds the home name to the home object
-   * and then adds the home object to the database
-   */
-  getHomeName() {
-    // console.log(this.homeName);
-    this.home.homeName = this.homeName;
-    this.auth.addHomeToDB(this.home);
-    // console.log(this.home.homeName);
+  //* this function sets the initial model for home in auth, and then adds the homeName
+  initHome() {
+    // console.log('home-setup', this.homeName, 'auth', this.auth.home.homeName);
+    this.auth.home = {
+      owner: [],
+      homeName: this.homeName,
+      rooms: [],
+    };
+    this.auth.save();
   }
 
   ngOnInit() {}

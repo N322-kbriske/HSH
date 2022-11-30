@@ -59,8 +59,7 @@ export class SignUpPage implements OnInit {
 
     /* If the user is logged in, it will navigate to the home setup page. If not, it will show an alert. */
     if (user) {
-      //! WAS HOME-SETUP
-      this.router.navigateByUrl('/profile-setup', { replaceUrl: true });
+      this.router.navigateByUrl('/home-setup', { replaceUrl: true });
     } else {
       this.showAlert('Sign up failed', 'Please try again');
     }

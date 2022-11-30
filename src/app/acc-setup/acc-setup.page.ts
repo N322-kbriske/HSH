@@ -8,37 +8,40 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./acc-setup.page.scss'],
 })
 export class AccSetupPage implements OnInit {
+  profile = null;
   accName: string;
-  public home: Home = {
-    owner: [
-      {
-        name: '',
-        role: '',
-      },
-    ],
-    homeName: '',
-    rooms: [
-      {
-        roomName: '',
-        accessories: [
-          {
-            accessoryName: '',
-            accessoryType: '',
-            accessoryState: false,
-          },
-        ],
-      },
-    ],
-  };
-  constructor(private auth: AuthService) {}
+  accType: string;
+  currentRoom: any = {};
 
-  getAccName() {
-    // console.log(this.homeName);
-    this.home.rooms[0].accessories[0].accessoryName = this.accName;
-    //? This will likely be another function, or should I store everything in service and push at once?
-    // this.auth.addHomeToDB(this.home);
-    console.log(this.home.rooms[0].accessories[0].accessoryName);
+  constructor(private auth: AuthService) {
+    this.auth.getUserProfile().subscribe((data) => {
+      this.profile = data;
+    });
   }
 
-  ngOnInit() {}
+  initAccessory() {
+    console.log(this.accName);
+    this.accType = this.auth.accType;
+
+    let accessory = {
+      name: this.accName,
+      type: this.accType,
+      state: false,
+      accessoryID: Date.now().toString(),
+    };
+
+    this.currentRoom.accessories.push(accessory);
+    this.auth.currentRoomObj = this.currentRoom;
+    this.auth.updateRoom();
+    console.log(this.currentRoom);
+    // this.auth.home.rooms[idx].accessories.push(accessory);
+    // console.log('AUTH ACCESSORIES', this.auth.home.rooms[idx].accessories);
+    this.auth.save();
+  }
+
+  ngOnInit() {
+    console.log(this.auth.currentRoomID);
+    this.currentRoom = this.auth.currentRoomObj;
+    // console.log(this.currentRoom);
+  }
 }

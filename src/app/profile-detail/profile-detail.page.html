@@ -1,13 +1,18 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/sign-up"></ion-back-button>
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="signOut()">
+        <ion-icon color="tertiary" slot="end" name="log-out"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="profileTitle">Create Profile</div>
+  <div class="profileTitle">Profile</div>
 
   <div class="fName">
     <ion-label class="fNameLabel">First Name</ion-label>
@@ -15,6 +20,7 @@
       type="text"
       [(ngModel)]="firstName"
       class="fNameInput"
+      placeholder="{{ownerFirstName}}"
     ></ion-input>
   </div>
 
@@ -24,16 +30,27 @@
       type="text"
       [(ngModel)]="lastName"
       class="lNameInput"
+      placeholder="{{ownerLastName}}"
     ></ion-input>
   </div>
+
   <div>
     <ion-button
       expand="full"
       color="tertiary"
       class="continueBtn"
-      (click)="initOwner()"
-      [routerLink]="['/home']"
-      >Continue</ion-button
+      (click)="signOut()"
+      >Sign Out</ion-button
+    >
+  </div>
+
+  <div>
+    <ion-button
+      expand="full"
+      color="tertiary"
+      class="continueBtn"
+      (click)="setOwner()"
+      >Save Changes</ion-button
     >
   </div>
 </ion-content>
