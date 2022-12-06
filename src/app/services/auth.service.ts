@@ -63,6 +63,20 @@ export class AuthService {
     });
   }
 
+  deleteRoom(roomObj) {
+    this.home.rooms.forEach((room) => {
+      if (room.roomID === this.currentRoomObj.roomID) {
+        // console.log('ID', acc.accID);
+        const index = this.currentRoomObj.accessories.indexOf(roomObj);
+        console.log(index);
+        this.home.rooms.splice(index, 1);
+        // console.log(this.currentRoomObj.accessories);
+        // room.accessories = this.currentRoomObj.accessories;
+        this.save();
+      }
+    });
+  }
+
   async presentToast(position: 'top' | 'middle' | 'bottom', message: string) {
     const toast = await this.toastController.create({
       message: message,

@@ -22,6 +22,7 @@ export class RoomDetailPage implements OnInit {
   public currentRoomAcc: any = [];
   public newAccName: string;
   public currentAcc: any = {};
+  public newRoomName: string;
 
   constructor(
     private auth: AuthService,
@@ -75,7 +76,15 @@ export class RoomDetailPage implements OnInit {
     console.log(acc);
     this.auth.deleteAcc(acc);
     this.presentToast('top', 'Accessory Deleted');
-    this.modal.dismiss();
+    this.router.navigateByUrl('/home', { replaceUrl: true });
+  }
+
+  deleteRoom(room) {
+    room = this.currentRoom;
+    console.log(room);
+    this.auth.deleteRoom(room);
+    this.presentToast('top', 'Room Deleted');
+    // this.modal.dismiss();
     this.router.navigateByUrl('/home', { replaceUrl: true });
   }
 
