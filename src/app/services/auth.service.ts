@@ -28,6 +28,8 @@ export class AuthService {
   public accType: string;
   public currentRoomID: string;
   public currentAccID: string;
+  public accIcon: string;
+  public currentAccObj: any = {};
 
   constructor(
     private auth: Auth,
@@ -43,8 +45,6 @@ export class AuthService {
     const user = this.auth.currentUser;
     /* Getting a reference to the user's document in the firestore database. */
     const userDocRef = doc(this.firestore, `Users/${user.uid}`);
-    // console.log('Retrieved ID:', user.uid);
-    // console.log(user);
     /* Getting the data from the userDocRef and returning it. */
     return docData(userDocRef, { idField: 'id' });
   }
@@ -172,7 +172,5 @@ export class AuthService {
 
     /* Setting the document in the firestore database. */
     setDoc(userDocRef, this.home);
-
-    //replace room selected with current room
   }
 }

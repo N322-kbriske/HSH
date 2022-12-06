@@ -21,6 +21,7 @@ export interface Accessories {
   type: string;
   state: boolean;
   accessoryID: string;
+  icon: string;
 }
 
 // export interface Home {

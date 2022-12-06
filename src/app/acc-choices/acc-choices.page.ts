@@ -13,16 +13,19 @@ export class AccChoicesPage implements OnInit {
   addLightBulb() {
     console.log('light bulb');
     this.auth.accType = 'lightbulb';
+    this.auth.accIcon = 'lightbulb.svg';
   }
 
   addSwitch() {
     console.log('switch');
     this.auth.accType = 'switch';
+    this.auth.accIcon = 'switch.svg';
   }
 
   addLock() {
     console.log('lock');
     this.auth.accType = 'lock';
+    this.auth.accIcon = 'lock.svg';
   }
 
   ngOnInit() {}

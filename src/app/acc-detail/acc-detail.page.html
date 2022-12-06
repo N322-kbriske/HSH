@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- <ion-label position="stacked">Rename Accessory</ion-label>
+        <ion-input
+          class="newName"
+          type="text"
+          placeholder="New name"
+          [(ngModel)]="newAccName"
+        ></ion-input> -->
+  <div class="accContainer">
+    <div class="acc" (click)="accPass(accessory)">
+      <div *ngIf="currentAcc.state == false" class="accIcon">
+        <img src="../../assets/icon/{{currentAcc.icon}}" alt="" />
+      </div>
+      <div *ngIf="currentAcc.state == true" class="accIcon2">
+        <img src="../../assets/icon/{{currentAcc.icon}}" alt="" />
+      </div>
+      {{currentAcc.name}}
+    </div>
+  </div>
+
+  <div class="status" *ngIf="currentAcc.state == false">
+    <div>Status: Off</div>
+  </div>
+  
+  <div class="status" *ngIf="currentAcc.state == true">
+    <div>Status: On</div>
+  </div>
+
+  <div class="accessoryInfo">
+    <ion-label class="accLabel">Rename Accessory</ion-label>
+    <ion-input
+      type="text"
+      [(ngModel)]="newAccName"
+      class="accNameInput"
+    ></ion-input>
+  </div>
+
+  <ion-button
+    expand="full"
+    color="tertiary"
+    class="updateAcc"
+    type="submit"
+    [disabled]="newAccName == null"
+    (click)="updateAcc(accessory)"
+    >Confirm</ion-button
+  >
+
+  <ion-button
+    expand="full"
+    color="warning"
+    class="deleteAcc"
+    type="submit"
+    (click)="deleteAcc(accessory)"
+    >Delete</ion-button
+  >
+</ion-content>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { access } from 'fs';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -59,21 +60,35 @@ export class HomePage {
     this.router.navigateByUrl('/room-detail', { replaceUrl: true });
   }
 
-  accDetail(accID) {
-    console.log(accID);
+  accToggle(e: Event, room, accessory) {
+    e.stopPropagation();
+    // console.log('ROOM', room);
+    this.auth.currentRoomObj = room;
+
+    if (accessory.state == false) {
+      accessory.state = true;
+    } else if (accessory.state == true) {
+      accessory.state = false;
+    }
+    console.log(accessory.state);
+    // this.auth.currentRoomObj;
+    this.auth.updateAcc(accessory);
+    this.auth.currentAccObj = accessory;
+    this.auth.save();
   }
 
-  addAcc() {
-    // console.log('clicked');
-    //update the home object in auth service
-    //in your auth call save.
+  accDetail(e: Event, room, accessory) {
+    e.stopPropagation();
+    this.auth.currentRoomObj = room;
+    this.auth.currentAccObj = accessory;
+    this.router.navigateByUrl('/acc-detail', { replaceUrl: true });
   }
 
-  changeState(accessoryID) {
-    this.currentAcc = accessoryID;
-    console.log('current acc:', this.currentAcc);
-    this.auth.currentAccID = this.currentAcc;
-  }
+  // changeState(accessoryID) {
+  //   this.currentAcc = accessoryID;
+  //   console.log('current acc:', this.currentAcc);
+  //   this.auth.currentAccID = this.currentAcc;
+  // }
 
   ngOnInit() {
     this.getHomeInfo();

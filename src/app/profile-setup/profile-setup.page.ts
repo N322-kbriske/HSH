@@ -25,7 +25,6 @@ export class ProfileSetupPage implements OnInit {
       role: 'admin',
     };
 
-    // this.auth.user.push(owner);
     this.auth.home.owner.push(owner);
     console.log('final', this.auth.home.owner);
 

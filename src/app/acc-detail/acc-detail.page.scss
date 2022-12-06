@@ -3,24 +3,11 @@
   src: url("../../assets/fonts/Roboto-Regular.ttf");
 }
 
-.currentRoomTitle {
-  font-family: Roboto;
-  color: #1e1e1e;
-  font-weight: 600;
-  font-size: 25px;
+.accContainer {
+  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  //TODO could be changed to 30 px on bottom to match home
-  margin: 5px 0px 38px 0px;
-}
-
-.accContainer {
-  margin-top: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
   // border: 2px solid red;
 
   .acc {
@@ -50,6 +37,7 @@
 
       width: 40px;
       height: 40px;
+
       box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.25);
       border-radius: 50%;
     }
@@ -71,13 +59,8 @@
   }
 }
 
-.addScrollArea {
-  padding: 25px;
-  // border: 2px solid orange;
-}
-
 .accessoryInfo {
-  margin-top: 150px;
+  margin-top: 35px;
   .accLabel {
     color: #1e1e1e;
     font-size: 15px;
@@ -105,8 +88,7 @@
   font-size: 15px;
   border-radius: 1px;
   height: 60px;
-  margin-top: 140px;
-  margin: 135px 0px 10px 0px;
+  margin: 70px 0px 10px 0px;
 }
 
 .deleteAcc {
@@ -116,24 +98,12 @@
   border-radius: 1px;
   height: 60px;
   //TODO can use fixed to make sure it always stays in place
-  // width: 240px;
-  // position: fixed;
-  // bottom: 0;
 }
 
-.menuBar {
-  position: fixed;
-  width: 100%;
-  height: 70px;
+.status {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0px 10px 15px 10px;
-  background-color: #d9d9d9;
-  bottom: 0;
-  opacity: 95%;
-  // border: 2px solid red;
-}
-
-.toolbarTitle {
+  justify-content: space-evenly;
+  font-family: Roboto;
+  margin-top: 20px;
 }

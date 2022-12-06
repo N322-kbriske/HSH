@@ -1,18 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { IonModal } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
-  selector: 'app-room-detail',
-  templateUrl: './room-detail.page.html',
-  styleUrls: ['./room-detail.page.scss'],
+  selector: 'app-acc-detail',
+  templateUrl: './acc-detail.page.html',
+  styleUrls: ['./acc-detail.page.scss'],
 })
-export class RoomDetailPage implements OnInit {
-  @ViewChild(IonModal) modal: IonModal;
-  // public message = 'Add a new image to your card array';
+export class AccDetailPage implements OnInit {
   name: string;
   profile = null;
   public rooms: any = [];
@@ -28,7 +27,6 @@ export class RoomDetailPage implements OnInit {
     private router: Router,
     private toastController: ToastController
   ) {
-    /* Getting the user profile from the database and assigning it to the variable profile. */
     this.auth.getUserProfile().subscribe((data) => {
       this.profile = data;
     });
@@ -51,66 +49,29 @@ export class RoomDetailPage implements OnInit {
     await toast.present();
   }
 
-  accPass(acc) {
-    // console.log(acc);
-    this.currentAcc = acc;
-  }
-
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
+  getCurrentAcc() {
+    this.currentAcc = this.auth.currentAccObj;
+    console.log('get current', this.currentAcc);
   }
 
   updateAcc(acc) {
     acc = this.currentAcc;
-    console.log(acc);
+    console.log('current', acc);
     acc.name = this.newAccName;
     this.auth.updateAcc(acc);
     this.presentToast('top', 'Accessory Edited');
-    this.modal.dismiss();
     this.router.navigateByUrl('/home', { replaceUrl: true });
   }
 
   deleteAcc(acc) {
     acc = this.currentAcc;
-    console.log(acc);
+    console.log('DELETE TIME', acc);
     this.auth.deleteAcc(acc);
     this.presentToast('top', 'Accessory Deleted');
-    this.modal.dismiss();
     this.router.navigateByUrl('/home', { replaceUrl: true });
   }
 
-  getCurrentRoom() {
-    this.auth.getUserProfile().subscribe((data) => {
-      // console.log('room detail retrieval', data);
-
-      //* set retrieved data to local variables for display
-      this.rooms = data.rooms;
-
-      this.currentRoomID = this.auth.currentRoomID;
-
-      this.currentRoom = this.rooms.find(
-        (room) => room.roomID === this.currentRoomID
-      );
-      console.log('room obj', this.currentRoom);
-      this.auth.currentRoomObj = this.currentRoom;
-      console.log('Auth room', this.auth.currentRoomObj);
-      // console.log(this.currentRoom.name);
-
-      this.currentRoomName = this.currentRoom.name;
-      this.currentRoomAcc = this.currentRoom.accessories;
-
-      console.log('acc array', this.currentRoomAcc);
-    });
-  }
-
-  addAccToCurrentRoom() {
-    console.log('almost there!');
-    console.log(this.currentRoom);
-    this.router.navigateByUrl('/acc-choices', { replaceUrl: true });
-  }
-
   ngOnInit() {
-    // this.getRoom();
-    this.getCurrentRoom();
+    this.getCurrentAcc();
   }
 }

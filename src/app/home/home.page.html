@@ -44,9 +44,22 @@
         <div
           class="accTitle"
           *ngFor="let accessory of room.accessories"
-          (click)="accDetail(accessory.accessoryID)"
+          (click)="accDetail($event, room, accessory)"
         >
-          <div class="accIcon"></div>
+          <div
+            *ngIf="accessory.state == false"
+            class="accIcon"
+            (click)="accToggle($event, room, accessory)"
+          >
+            <img src="../../assets/icon/{{accessory.icon}}" alt="" />
+          </div>
+          <div
+            *ngIf="accessory.state == true"
+            class="accIcon2"
+            (click)="accToggle($event, room, accessory)"
+          >
+            <img src="../../assets/icon/{{accessory.icon}}" alt="" />
+          </div>
           {{accessory.name}}
         </div>
       </div>
@@ -91,7 +104,7 @@
     </ion-button>
   </div>
   <div class="barHelpButton">
-    <ion-button color="menuBar" [routerLink]="['/home']">
+    <ion-button color="menuBar" [routerLink]="['/support']">
       <svg
         width="24"
         height="24"

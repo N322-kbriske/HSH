@@ -12,6 +12,7 @@ export class AccSetupPage implements OnInit {
   accName: string;
   accType: string;
   currentRoom: any = {};
+  accIcon: string;
 
   constructor(private auth: AuthService) {
     this.auth.getUserProfile().subscribe((data) => {
@@ -22,12 +23,14 @@ export class AccSetupPage implements OnInit {
   initAccessory() {
     console.log(this.accName);
     this.accType = this.auth.accType;
+    this.accIcon = this.auth.accIcon;
 
     let accessory = {
       name: this.accName,
       type: this.accType,
       state: false,
       accessoryID: Date.now().toString(),
+      icon: this.accIcon,
     };
 
     this.currentRoom.accessories.push(accessory);
