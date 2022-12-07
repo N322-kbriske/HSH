@@ -23,12 +23,7 @@
   <!-- <ion-label class="homeName">{{homeName}}</ion-label> -->
   <div *ngIf="rooms == 0" class="emptyRoom">
     <div class="emptyRoomText">Add an accessory</div>
-    <ion-button
-      color="danger"
-      (click)="addAcc()"
-      [routerLink]="['/accessory-room']"
-      class="add"
-    >
+    <ion-button color="danger" [routerLink]="['/accessory-room']" class="add">
       <ion-icon name="add-outline" size="small"></ion-icon>
     </ion-button>
   </div>

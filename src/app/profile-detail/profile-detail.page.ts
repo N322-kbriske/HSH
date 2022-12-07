@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { IonModal } from '@ionic/angular';
+import { OverlayEventDetail } from '@ionic/core/components';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile-detail',
@@ -12,13 +15,55 @@ export class ProfileDetailPage implements OnInit {
   public owners: [];
   public ownerFirstName: string;
   public ownerLastName: string;
-  public firstName: string;
-  public lastName: string;
+  public ownerRole: string;
+  public fName: string;
+  public lName: string;
+  @ViewChild(IonModal) modal: IonModal;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private toastController: ToastController
+  ) {
     this.auth.getUserProfile().subscribe((data) => {
       this.profile = data;
     });
+  }
+
+  message =
+    'This modal example uses triggers to automatically open a modal when the button is clicked.';
+  name: string;
+
+  async presentToast(position: 'top' | 'middle' | 'bottom', message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2200,
+      cssClass: 'custom-toast',
+      position: position,
+      // icon: 'checkmark-outline'
+      // buttons: [
+      //   {
+      //     text: 'Dismiss',
+      //     role: 'cancel',
+      //   },
+      // ],
+    });
+    await toast.present();
+  }
+
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    this.modal.dismiss(this.name, 'confirm');
+  }
+
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    if (ev.detail.role === 'confirm') {
+      this.message = `Hello, ${ev.detail.data}!`;
+    }
   }
 
   async signOut() {
@@ -34,8 +79,11 @@ export class ProfileDetailPage implements OnInit {
       // data.owner.forEach((owner) => {
       //   console.log(owner.firstName);
       // });
-      this.ownerFirstName = data.owner[0].firstName;
-      this.ownerLastName = data.owner[0].lastName;
+
+      this.owners = data.owner;
+      // this.ownerFirstName = data.owner[0].firstName;
+      // this.ownerLastName = data.owner[0].lastName;
+      // this.ownerRole = data.owner[0].role;
     });
   }
 
@@ -43,8 +91,8 @@ export class ProfileDetailPage implements OnInit {
   //! THIS ACTUALLY FUNCTIONS AS AN ADD NEW OWNER FEATURE
   setOwner() {
     let owner = {
-      firstName: this.firstName,
-      lastName: this.lastName,
+      firstName: this.fName,
+      lastName: this.lName,
       role: 'user',
     };
 
@@ -53,6 +101,8 @@ export class ProfileDetailPage implements OnInit {
     console.log('final', this.auth.home.owner);
 
     this.auth.save();
+    this.modal.dismiss();
+    this.presentToast('top', 'User added');
   }
 
   ngOnInit() {

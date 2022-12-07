@@ -75,3 +75,13 @@
   border-radius: 1px;
   height: 60px;
 }
+
+/* iOS places the subtitle above the title */
+ion-card-header.ios {
+  display: flex;
+  flex-flow: column-reverse;
+}
+
+.owner {
+  color: #006989;
+}
